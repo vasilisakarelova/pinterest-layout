@@ -38,7 +38,7 @@ body {
   column-count: 1;
   text-align: justify;
 
-  @media screen and (min-width: 767px) {
+  @media screen and (min-width: 768px) {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2;
@@ -46,8 +46,6 @@ body {
 }
 
 .grid-container {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   -webkit-column-count: 2;
   -moz-column-count: 2;
   column-count: 2;
