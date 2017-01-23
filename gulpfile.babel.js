@@ -31,13 +31,44 @@ const notify = function (error) {
   notifier.notify({title: title, message: message});
 };
 
+// create javascript bundle
+gulp.task('build', function() {
+  return gulp.src('js/main.js')
+    .pipe(webpack({
+      output: {
+        filename: 'bundle.js'
+      },
+      watch: true,
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            exclude: /(node_modules)/,
+            loader: 'babel',
+            query: {
+              presets: ['es2015']
+            }
+          }
+        ]
+      }
+    }))
+    .pipe(gulp.dest('./js'));
+});
+
 // compile the SASS files from main.scss
 gulp.task('sass', function () {
-  gulp.src('./style.scss')
+  gulp.src('./styles/style.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('main.css'))
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./styles'));
+});
+
+gulp.task('sass-second', function () {
+  gulp.src('./styles/second.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(concat('second.css'))
+    .pipe(gulp.dest('./styles'));
 });
 
 // Run tasks in a specific order
-gulp.task('default', ['sass']);
+gulp.task('default', ['build']);
