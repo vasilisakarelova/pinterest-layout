@@ -45,11 +45,88 @@ body {
   }
 }
 
+.header-stage {
+  min-height: 12.5rem;
+  padding-top: 7rem;
+}
+
+.menu-item-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  background: #fff200;
+  display: block;
+  position: absolute;
+  padding: 20px;
+  margin-top: 10px;
+  transition: all .3s ease-in;
+}
+
+.is-shown {
+    opacity: 1;
+    visibility: visible;
+}
+
+.header-nav {
+  position: fixed;
+  left: 0;
+  background: #0e0eff;
+  padding: 0 50px;
+  display: flex;
+  width: 100%;
+  z-index: 999;
+}
+
+.menu {
+  position: relative;
+display: inline-block;
+  float: left;
+}
+
+.menu-item {
+  display: inline;
+  padding: 0 20px;
+}
+
+.menu-parent {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 5.25rem;
+  float: left;
+  transform: translateZ(0);
+  list-style: none;
+  padding: 0;
+}
+
+.header-search-bar {
+  display: inline-block;
+  position: relative;
+  float: left;
+
+  display: -webkit-inline-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+
+.search-input {
+  position: relative;
+  display: block;
+}
+
 .grid-container {
   position: relative;
   width: 100vw;
+  margin: 0 auto;
   height: 100vh;
   padding: 0 50px;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1060px;
+  }
 }
 
 .grid-panel {

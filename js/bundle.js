@@ -52,12 +52,30 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 	var columnOne = 0;
 	var columnTwo = 0;
 	var columnThree = 0;
 	var columnFour = 0;
 
 	(0, _jquery2.default)('[data-grid-container]').children().each(function (index, el) {
+	  if (window.innerWidth < 1024) {
+	    if (columnThree <= columnTwo) {
+	      (0, _jquery2.default)(el).css('top', columnThree + 'px');
+	      (0, _jquery2.default)(el).css('left', (0, _jquery2.default)(el).outerWidth() * 2 + 50 + 'px');
+	      columnThree += parseInt((0, _jquery2.default)(el).css('height'));
+	    } else if (columnTwo <= columnOne) {
+	      (0, _jquery2.default)(el).css('top', columnTwo + 'px');
+	      (0, _jquery2.default)(el).css('left', (0, _jquery2.default)(el).outerWidth() + 50 + 'px');
+	      columnTwo += parseInt((0, _jquery2.default)(el).css('height'));
+	    } else if (columnOne < columnTwo) {
+	      (0, _jquery2.default)(el).css('top', columnOne + 'px');
+	      columnOne += parseInt((0, _jquery2.default)(el).css('height'));
+	    }
+	    return;
+	  }
+
 	  if (columnFour <= columnThree) {
 	    (0, _jquery2.default)(el).css('top', columnThree + 'px');
 	    (0, _jquery2.default)(el).css('left', (0, _jquery2.default)(el).outerWidth() * 3 + 50 + 'px');
@@ -66,14 +84,24 @@
 	    (0, _jquery2.default)(el).css('top', columnThree + 'px');
 	    (0, _jquery2.default)(el).css('left', (0, _jquery2.default)(el).outerWidth() * 2 + 50 + 'px');
 	    columnThree += parseInt((0, _jquery2.default)(el).css('height'));
-	  } else if (columnOne <= columnTwo) {
-	    (0, _jquery2.default)(el).css('top', columnOne + 'px');
-	    columnOne += parseInt((0, _jquery2.default)(el).css('height'));
-	  } else if (columnOne > columnTwo) {
+	  } else if (columnTwo <= columnOne) {
 	    (0, _jquery2.default)(el).css('top', columnTwo + 'px');
 	    (0, _jquery2.default)(el).css('left', (0, _jquery2.default)(el).outerWidth() + 50 + 'px');
 	    columnTwo += parseInt((0, _jquery2.default)(el).css('height'));
+	  } else if (columnOne < columnTwo) {
+	    (0, _jquery2.default)(el).css('top', columnOne + 'px');
+	    columnOne += parseInt((0, _jquery2.default)(el).css('height'));
 	  }
+	});
+
+	[].concat(_toConsumableArray(document.querySelectorAll('[data-sub-menu]'))).forEach(function (subMenu) {
+	  subMenu.addEventListener('mouseover', function (el) {
+	    el.target.classList.add('is-shown');
+	  });
+
+	  subMenu.addEventListener('mouseleave', function (el) {
+	    el.target.classList.remove('is-shown');
+	  });
 	});
 
 /***/ },

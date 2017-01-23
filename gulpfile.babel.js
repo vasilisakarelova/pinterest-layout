@@ -71,4 +71,4 @@ gulp.task('sass-second', function () {
 });
 
 // Run tasks in a specific order
-gulp.task('default', ['build']);
+gulp.task('default', ['build', 'sass-second']);
