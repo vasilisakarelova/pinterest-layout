@@ -6,6 +6,7 @@ import notifier from 'node-notifier';
 import server from 'gulp-server-livereload';
 import concat from 'gulp-concat';
 import sass from 'gulp-sass';
+import autoprefixer from 'gulp-autoprefixer';
 
 // error messages
 const notify = function (error) {
@@ -36,6 +37,7 @@ gulp.task('sass', function () {
   gulp.src('./scss/main.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('style.css'))
+    .pipe(autoprefixer())
     .pipe(gulp.dest('./'));
 });
 
