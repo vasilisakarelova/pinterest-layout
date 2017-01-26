@@ -1,0 +1,17 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: Helvetica, Arial, sans-serif;
+  min-height: 100%;
+  margin: 0;
+}
