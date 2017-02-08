@@ -1,14 +1,17 @@
 .grid-container {
-  column-count: 2;
+  column-count: 1;
   column-gap: 0;
   position: relative;
-  padding: 0 50px 50px;
+  margin: 0 auto;
+  max-width: 240px;
 
   @media screen and (min-width: 768px) {
+    max-width: 720px;
     column-count: 3;
   }
 
   @media screen and (min-width: 1024px) {
+    max-width: 960px;
     column-count: 4;
   }
 }
